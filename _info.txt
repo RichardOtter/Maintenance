@@ -1,0 +1,29 @@
+In Maintenance folder
+
+_Backup NOW and sleep
+pwsh -ExecutionPolicy Bypass -File "Run keep awake then sleep.ps1" "BackUp NOW.cmd"
+
+_Create FileListing
+pwsh -ExecutionPolicy Bypass -File "Run keep awake.ps1" "Create FileListing generator.ps1"
+
+_Create Research Snapshot
+pwsh -ExecutionPolicy Bypass -File "Run keep awake.ps1" "Create Research Snapshot.cmd"
+
+Update the 2T SSD Backup
+pwsh -ExecutionPolicy Bypass -File "Run keep awake.ps1" "Update the 2T SSD Backup.cmd"
+
+repair corrupt icon cache
+pwsh -ExecutionPolicy Bypass -File "repair corrupt icon cache.ps1"
+
+
+
+OLD
+seems like simple format above works at least in more current powershell
+
+To run a powershell script from command line or shortcut that takes an argument
+powershell.exe -ExecutionPolicy Bypass -Command "& 'C:\Users\rotter\Development\Maintenance\Run_keep awake.ps1' 'test space.cmd'"
+
+if shortcut Start in is set to C:\Users\rotter\Development\Maintenance
+then target=
+powershell.exe -ExecutionPolicy Bypass -Command "& '.\Run_keep awake.ps1' 'test space.cmd'"
+
