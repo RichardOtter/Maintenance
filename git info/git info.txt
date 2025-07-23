@@ -1,0 +1,32 @@
+===========================================DIV50==
+
+to avoid unneeded database compaction and backup to backblaze.
+
+ran-
+$ git config --global gui.gcwarning false
+
+https://stackoverflow.com/questions/1106529/how-to-skip-loose-object-popup-when-running-git-gui
+
+===========================================DIV50==
+
+
+git update
+git update-git-for-windows
+===========================================DIV50==
+
+tags can be deleted and or renamed-  see   https://phoenixnap.com/kb/git-rename-tag
+
+add annotated tag
+git tag -a [new_tag]  -m [new_message]
+
+delete tag
+git tag -d [old_tag_name]
+
+push tag
+git push --tag
+
+remove old tag in remote
+git push origin [new_tag_name] :[old_tag_name]
+
+===========================================DIV50==
+

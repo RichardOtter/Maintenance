@@ -9,8 +9,9 @@ $ScriptToRun
 $WShell = New-Object -com "Wscript.Shell"
 $keepAwake = {
     while ($true) {
-        $WShell.sendkeys("{SCROLLLOCK}")
-        Start-Sleep -Seconds 60
+        $WShell.sendkeys('+{F15}')
+        #$WShell.sendkeys("{SCROLLLOCK}")
+        Start-Sleep -Seconds 10
     }
 }
 Start-Job -ScriptBlock $keepAwake
@@ -18,7 +19,7 @@ Start-Job -ScriptBlock $keepAwake
 $scriptType=[System.IO.Path]::GetExtension($ScriptToRun)
 
 if( ".ps1" -eq $scriptType) {
-	Start-Process -FilePath "powershell.exe" -ArgumentList "-File `"$ScriptToRun`"" -NoNewWindow -Wait
+	Start-Process -FilePath "pwsh.exe" -ArgumentList "-File `"$ScriptToRun`"" -NoNewWindow -Wait
 }
 elseif( ".cmd" -eq $scriptType -or ".bat" -eq $scriptType)
 {

@@ -18,7 +18,7 @@ Start-Job -ScriptBlock $keepAwake
 $scriptType=[System.IO.Path]::GetExtension($ScriptToRun)
 
 if( ".ps1" -eq $scriptType) {
-	Start-Process -FilePath "powershell.exe" -ArgumentList "-File `"$ScriptToRun`"" -NoNewWindow -Wait
+	Start-Process -FilePath "pwsh.exe" -ArgumentList "-File `"$ScriptToRun`"" -NoNewWindow -Wait
 }
 elseif( ".cmd" -eq $scriptType -or ".bat" -eq $scriptType)
 {
@@ -41,7 +41,8 @@ Write-Host "Bye, sleep or hibernate" -ForegroundColor Green
 
 
 #   https://www.nirsoft.net/utils/nircmd.html
-# run #nircmd standby or hibernate
-Start-Process -FilePath "\bin\nircmd.exe" -ArgumentList "hibernate" -NoNewWindow
+
+# Start-Process -FilePath "\bin\nircmd.exe" -ArgumentList "hibernate" -NoNewWindow
+Start-Process -FilePath "\bin\nircmd.exe" -ArgumentList "standby" -NoNewWindow
 
 
