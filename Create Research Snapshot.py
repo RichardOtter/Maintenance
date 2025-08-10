@@ -21,7 +21,7 @@ def main():
     gedcom_fldr_path = ext_root / r"Genealogy\Generated Output\GEDCOM"
     file_listing_fldr_path = ext_root / r"Genealogy\Generated Output\File listings"
     HASH_listing_fldr_path = ext_root / r"Genealogy\Generated Output\External files hash listings"
-    readme_path = media_fldr_path / r"UNREF\for Research Snapshot--ReadMe.txt"
+    readme_path = media_fldr_path / r"Misc\for Research Snapshot--ReadMe.txt"
 
     # Data destination locations
     dest_gdrive = Path(r"G:\My Drive\Genealogy\Snapshots")

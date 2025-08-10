@@ -22,14 +22,16 @@ ECHO ==================================
 ECHO ===pause 30 sec==========
 ECHO ==================================
 ECHO ==================================
+
 ECHO  will do "\bin\nircmd.exe" standby
 
-timeout /t 30
-REM powercfg -hibernate off
-REM rundll32.exe powrprof.dll,SetSuspendState Sleep
 
 REM   https://www.nirsoft.net/utils/nircmd.html
 REM  hibernate  standby  
-"\bin\nircmd.exe" standby
+REM "\bin\nircmd.exe" standby
 
+REM https://learn.microsoft.com/en-us/sysinternals/
+REM create a scheduled task to run with admin, run it from command line
+REN psshutdown -d -t 10
+schtasks /Run /TN "RJO\Put computer to sleep"
 
