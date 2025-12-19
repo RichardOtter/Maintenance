@@ -17,5 +17,5 @@ mklink /J Immirgration            "%SRC_ROOT%\Passenger List\_Standard forms"
 mklink /J Military                "%SRC_ROOT%\Military\USA\_Standard forms"
 mklink /J Naturalization          "%SRC_ROOT%\Citizenship\_Standard forms"
 mklink /J "Passport Application"  "%SRC_ROOT%\Passport Application\USA\_Standard forms"
-
+mklink /J Military                "%SRC_ROOT%\Militart\Germany\Bayern\_Standard forms"
 

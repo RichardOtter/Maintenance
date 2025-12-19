@@ -9,7 +9,13 @@ timestamp = datetime.now().strftime('%Y%m%d_%H%M')
 
 path_to_list = Path(r'C:/Users/rotter/Genealogy')
 Gene_external_root = Path(r"E:\Users Overflow\ROtter external\Genealogy")
-output_file =Gene_external_root / "Generated Output\File Listings" / f'File_Listings ({timestamp}).txt'
+output_file = (Gene_external_root
+               / "Generated Output"
+               / "File Listings"
+               / F"File_Listings ({timestamp}).txt")
+
+print (output_file)
+
 
 with open(output_file, 'a', encoding='utf-8') as f:
     f.write('\r\n')

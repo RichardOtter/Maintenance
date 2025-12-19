@@ -7,6 +7,7 @@ from wakepy import keep     # https://github.com/fohrloop/wakepy/blob/main/READM
 
 # ===================================================DIV60==
 def main():
+    _DEBUG = False
     # Timestamp
     timestamp = datetime.now().strftime("%Y-%m-%d-%H%M%S")
 
@@ -15,6 +16,8 @@ def main():
     gen_root = Path(userprofile) / "Genealogy"
     ext_root = Path(r"E:\Users Overflow\ROtter external")
 
+    production_db_path = gen_root / r"GeneDB\Otter-Saito.rmtree"
+
     media_fldr_path = gen_root / r"GeneDB\RM_LinkedFiles"
     gen_appinst_fldr_path = ext_root / r"Genealogy\Archives\Software\RootsMagic Installers -current"
     gen_bu_path = ext_root / r"backup\RootsMagic"
@@ -22,10 +25,11 @@ def main():
     file_listing_fldr_path = ext_root / r"Genealogy\Generated Output\File listings"
     HASH_listing_fldr_path = ext_root / r"Genealogy\Generated Output\External files hash listings"
     readme_path = media_fldr_path / r"Misc\for Research Snapshot--ReadMe.txt"
+    web_site_fldr_path = ext_root / r"Genealogy\Generated Output\WebSite - GedSite\Otter-Saito-o"
 
     # Data destination locations
-    dest_gdrive = Path(r"G:\My Drive\Genealogy\Snapshots")
-    dest_onedrive = Path(userprofile) / r"OneDrive\Documents\Genealogy archive\Snapshots"
+    dest_gdrive = Path(r"G:\My Drive\Genealogy\Genealogy Snapshots")
+    dest_onedrive = Path(userprofile) / r"OneDrive\Documents\Genealogy archive\Genealogy Snapshots"
     out_file_full = "RM_LinkedFiles-All.zip"
     out_file_pics = "RM_LinkedFiles_PicsOnly.zip"
     sevenzip_app = Path(os.environ['ProgramFiles']) / r"7-zip\7z.exe"
@@ -40,7 +44,7 @@ def main():
 
     # Generate file listing
     # Run the script and wait for it to complete
-    subprocess.run(["python", f'{userprofile}/Development/Maintenance/Create File Listing.py'])
+    subprocess.run(["python", f'{userprofile}//Development//repo Maintenance//Create File Listing.py'])
 
     # Find latest files
     latest_db_main_bk = get_latest_file(gen_bu_path, "Otter-Saito*.rmbackup")
@@ -63,22 +67,32 @@ def main():
     # https://sevenzip.osdn.jp/chm/cmdline/
     # https://7ziphelp.com/7zip-command-line
 
+    # creating the zip files and copying the large files is the slowest part
+
     # Zipping files (using 7-Zip via command line)
-    subprocess.run(f'"{sevenzip_app}" a -bsp0 -mx0 -tzip -r -xr!Audio\\ -xr!Misc\\ -xr!Sources\\ -xr!TODO\\ "{temp_fldr / out_file_pics}" "{media_fldr_path}"', shell=True)
-    subprocess.run(f'"{sevenzip_app}" a -bsp0 -mx0 -tzip -r "{temp_fldr / out_file_full}" "{media_fldr_path}"', shell=True)
+    # does not include: -xr!Audio\\ -xr!Misc\\ -xr!Sources\\ -xr!TODO\\ 
+    # does include C:\Users\rotter\Genealogy\GeneDB\RM_LinkedFiles
+    #                          Data Entry, Images, Status
+    if not _DEBUG:
+        subprocess.run(f'"{sevenzip_app}" a -bsp0 -mx0 -tzip -r -xr!Audio\\ -xr!Misc\\ -xr!Sources\\ -xr!TODO\\ "{temp_fldr / out_file_pics}" "{media_fldr_path}"', shell=True)
+        subprocess.run(f'"{sevenzip_app}" a -bsp0 -mx0 -tzip -r "{temp_fldr / out_file_full}" "{media_fldr_path}"', shell=True)
+    else:
+        Path(f'{temp_fldr / out_file_pics}').touch()
+        Path(f'{temp_fldr / out_file_full}').touch()
 
-#    Path(f'{temp_fldr / out_file_pics}').touch()
-#    Path(f'{temp_fldr / out_file_full}').touch()
 
-
-
+#      a nested function
 # ===================================================DIV60==
     def copy_files(dest_fldr):
-        # a nested function
+        print(F"\n\nCopying files to {dest_fldr}")
         dest_fldr.mkdir(parents=True, exist_ok=True)
-        shutil.copy(latest_db_main_bk, dest_fldr)
+
         misc_path = dest_fldr / misc_fldr
         misc_path.mkdir(exist_ok=True)
+
+        shutil.copy(production_db_path, dest_fldr)
+        shutil.copy(latest_db_main_bk, misc_fldr)
+
         shutil.copy(latest_db_unlink_bk, misc_path)
         if latest_db_main_ged:
             shutil.copy(latest_db_main_ged, misc_path)
@@ -92,14 +106,19 @@ def main():
         shutil.copy(latest_file_listings, misc_path)
         shutil.copy(temp_fldr / out_file_pics, dest_fldr)
         shutil.copy(temp_fldr / out_file_full, dest_fldr)
+    # current 32 GB drives too small
+    #   shutil.copytree(web_site_fldr_path, dest_fldr / "WebSite_files")
 
+# ===================================================DIV60==
+
+# main function continued
     with keep.running():
     # with keep.presenting():
         # Flash drive copy
         if copy_flash:
             while True:
                 dest_dr = input("Enter the letter of the destination drive: ").strip().upper()
-                dest_fldr = Path(f"{dest_dr}:") / timestamp
+                dest_fldr = Path(f"{dest_dr}:") / ('\\'+ timestamp)
                 copy_files(dest_fldr)
                 if not prompt_yes_no("Another copy on another flash drive"):
                     break
@@ -115,6 +134,7 @@ def main():
             copy_files(dest_fldr)
 
         # Cleanup
+
         print("Done copying. Proceed to cleanup of temporary files created in this script?")
         input("Press Enter to continue...")
         shutil.rmtree(temp_fldr, ignore_errors=True)

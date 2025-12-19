@@ -4,9 +4,11 @@ REM  https://learn.microsoft.com/en-us/windows-server/administration/windows-com
 
 @ECHO OFF
 
-REM Generate time stamp
-FOR /F %%A IN ('WMIC OS GET LocalDateTime ^| FINDSTR \.') DO @SET B=%%A
-SET TIMESTAMP=%B:~0,4%-%B:~4,2%-%B:~6,2%-%B:~8,2%%B:~10,2%%B:~12,2%
+
+REM YYYYMMDD-HHMMSS
+SET TIMESTAMP=%date:~10,4%-%date:~4,2%-%date:~7,2%-%time:~0,2%%time:~3,2%%time:~6,2%
+echo %TIMESTAMP%
+
 
 ECHO Run as admin for the backup folder
 PAUSE
