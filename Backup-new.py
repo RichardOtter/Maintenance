@@ -42,19 +42,18 @@ def main():
         restart_google_drive(GOOGLE_DRIVE_EXE)
         print("[DONE] Sync should begin immediately.")
 
+        #   cmd.exe /c "C:\Program Files (x86)\Backblaze\bztransmit.exe" -forcefullfilescan_backup_wait_for_completion
         subprocess.run(
             ["cmd.exe", "/c", 
              r'C:\Program Files (x86)\Backblaze\bztransmit.exe',
              '-forcefullfilescan_backup_wait_for_completion'],
             creationflags=subprocess.CREATE_NEW_CONSOLE
         )
-
-
-#   cmd.exe /c "C:\Program Files (x86)\Backblaze\bztransmit.exe" -forcefullfilescan_backup_wait_for_completion
+   
         timeout_with_break(600)
 
         # Run A Manually Scheduled Task To Sleep Computer
-        subprocess.run(["schtasks", "/Run", "/TN", r"RJO\Put computer to sleep" ])
+        subprocess.run([r"schtasks.exe", "/Run", "/TN", "\RJO\Put computer to sleep" ])
 
         print("DONE")
 
