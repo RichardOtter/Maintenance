@@ -1,0 +1,12 @@
+{
+    "cSpell.words": [
+        "wakepy"
+    ],
+    "python-envs.pythonProjects": [
+        {
+            "path": "BackupNow and sleep.py",
+            "envManager": "ms-python.python:venv",
+            "packageManager": "ms-python.python:pip"
+        }
+    ]
+}

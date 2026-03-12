@@ -37,7 +37,10 @@ SET EXT_FLDR=E:\Users Overflow\ROtter external
 
 SET DEST_FLDR=%DEST_DR%:\MIRROR
 
-SET RC_COMMON_OPT= /mir /mt /z /unicode /tee /log+:"%LOG_FILE_PATH%"
+SET RC_COMMON_OPT= /mir /mt /R:10  /unicode /tee /log+:"%LOG_FILE_PATH%"
+
+REM for very large files
+SET RC_SPEC_OPT=   /mir /J  /R:10  /unicode /tee /log+:"%LOG_FILE_PATH%"
 
 if %LOG_LEVEL%==LOG_ONLY (
   SET RC_OPT_LONGONLY= /L
@@ -45,8 +48,6 @@ if %LOG_LEVEL%==LOG_ONLY (
   SET "RC_OPT_LONGONLY="
 )
 
-REM Keep awake until done
-"C:\Program Files\PowerToys\PowerToys.Awake.exe" --use-parent-pid
 
 robocopy "%USERPROFILE%\Genealogy"       "%DEST_FLDR%\rotter\Genealogy"     %RC_OPT_LONGONLY% %RC_COMMON_OPT% /xd ".git" 
 robocopy "%USERPROFILE%\Development"     "%DEST_FLDR%\rotter\Development"   %RC_OPT_LONGONLY% %RC_COMMON_OPT% /xd ".git" 
@@ -58,9 +59,9 @@ robocopy "%USERPROFILE%\Pictures"        "%DEST_FLDR%\rotter\Pictures"      %RC_
 robocopy "%USERPROFILE%\Music"           "%DEST_FLDR%\rotter\Music"         %RC_OPT_LONGONLY% %RC_COMMON_OPT% 
 robocopy "%USERPROFILE%\Test"            "%DEST_FLDR%\rotter\Test"          %RC_OPT_LONGONLY% %RC_COMMON_OPT% /xd ".git" 
 robocopy "%EXT_FLDR%\External Documents" "%DEST_FLDR%\External Documents"   %RC_OPT_LONGONLY% %RC_COMMON_OPT%
-robocopy "%EXT_FLDR%\git repos"          "%DEST_FLDR%\git repos"            %RC_OPT_LONGONLY% %RC_COMMON_OPT%
-robocopy "E:\Shared"                      "%DEST_FLDR%\Shared"              %RC_OPT_LONGONLY% %RC_COMMON_OPT%
-robocopy "F:\WindowsImageBackup"          "%DEST_FLDR%\WindowsImageBackup"  %RC_OPT_LONGONLY% %RC_COMMON_OPT%
+robocopy "%EXT_FLDR%\git repos"          "%DEST_FLDR%\git repos"            %RC_OPT_LONGONLY% %RC_SPEC_OPT%
+robocopy "E:\Shared"                     "%DEST_FLDR%\Shared"               %RC_OPT_LONGONLY% %RC_COMMON_OPT%
+robocopy "F:\WindowsImageBackup"         "%DEST_FLDR%\WindowsImageBackup"   %RC_OPT_LONGONLY% %RC_SPEC_OPT%
 
-pause
+
 

@@ -1,0 +1,10 @@
+check path for new pyton location
+check for scripts location
+
+packages:
+
+py -m pip install wakepy
+
+
+now uses install manager
+
