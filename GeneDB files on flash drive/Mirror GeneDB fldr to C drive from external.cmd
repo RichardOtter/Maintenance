@@ -8,7 +8,6 @@ REM Generate time stamp
 FOR /F %%A IN ('WMIC OS GET LocalDateTime ^| FINDSTR \.') DO @SET B=%%A
 SET TIMESTAMP=%B:~0,4%-%B:~4,2%-%B:~6,2%-%B:~8,2%%B:~10,2%%B:~12,2%
 
-
 SET LOG_LEVEL=LOG_ONLY
 rem RUN
 rem LOG_ONLY
@@ -23,8 +22,7 @@ IF %LOG_LEVEL%==LOG_ONLY (
 ) 
 ECHO Insert the external drive and determine its drive letter.
 PAUSE
-SET /p EXTERNAL_DRV=Enter the leter (only) of the destination drive. (Any drive is safe)
-
+SET /p EXTERNAL_DRV=Enter the letter (only) of the destination drive. (Any drive is safe)
 
 SET LOG_FLDR=%EXTERNAL_DRV%:\
 
@@ -40,12 +38,7 @@ if %LOG_LEVEL%==LOG_ONLY (
   SET "RC_OPT_LONGONLY="
 )
 
-REM Keep awake until done
-"C:\Program Files\PowerToys\PowerToys.Awake.exe" --use-parent-pid
-
-
 robocopy  "%EXTERNAL_FLDR%\rotter\Genealogy\GeneDB\SW" "%USERPROFILE%\Genealogy\GeneDB\SW"     %RC_OPT_LONGONLY% %RC_COMMON_OPT% /xd ".git" 
-
 
 pause
 

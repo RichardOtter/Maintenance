@@ -40,7 +40,7 @@ def main():
 
         kill_google_drive()
         restart_google_drive(GOOGLE_DRIVE_EXE)
-        print("[DONE] Sync should begin immediately.")
+        print("[DONE] Google Drive sync should begin immediately.")
 
         #   cmd.exe /c "C:\Program Files (x86)\Backblaze\bztransmit.exe" -forcefullfilescan_backup_wait_for_completion
         subprocess.run(
