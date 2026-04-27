@@ -53,7 +53,7 @@ def main():
         timeout_with_break(600)
 
         # Run A Manually Scheduled Task To Sleep Computer
-        subprocess.run([r"schtasks.exe", "/Run", "/TN", "\RJO\Put computer to sleep" ])
+        subprocess.run([r"schtasks.exe", "/Run", "/TN", r"\RJO\Put computer to sleep" ])
 
         print("DONE")
 
