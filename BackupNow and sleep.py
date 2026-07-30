@@ -7,9 +7,24 @@ from wakepy import keep     # https://github.com/fohrloop/wakepy/blob/main/READM
 import time
 import msvcrt
 
+
 # ===================================================DIV60==
+# Path to Google Drive executable (Drive for desktop)
+GOOGLE_DRIVE_EXE = Path(
+    r"C:\Program Files\Google\Drive File Stream\127.0.1.0\GoogleDriveFS.exe"
+)
+
+# ===================================================DIV60==
+
+
 def main():
     _DEBUG = False
+
+    # Fail fast if Google Drive is not already running.
+    if not is_google_drive_running():
+        print("[ERROR] Google Drive is not running. Start Google Drive, then try again.")
+        input("Press Enter to exit...")
+        return 1
 
     # Timestamp
     timestamp = datetime.now().strftime("%Y-%m-%d-%H%M%S")
@@ -30,13 +45,15 @@ def main():
 
         # check for existence of google dest folder
         # may need to restart drive
-        print(F"\n\nCopying files to {dest_gdrive}")      
+        print(F"\n\nCopying files to {dest_gdrive}")
         shutil.copy(production_db_path, dest_gdrive)
-        shutil.copytree(secondary_dbs_fldr_path, dest_gdrive, dirs_exist_ok=True)
+        shutil.copytree(secondary_dbs_fldr_path,
+                        dest_gdrive, dirs_exist_ok=True)
 
         print(F"\n\nCopying files to {dest_onedrive}")
         shutil.copy(production_db_path, dest_onedrive)
-        shutil.copytree(secondary_dbs_fldr_path, dest_onedrive, dirs_exist_ok=True)
+        shutil.copytree(secondary_dbs_fldr_path,
+                        dest_onedrive, dirs_exist_ok=True)
 
         kill_google_drive()
         restart_google_drive(GOOGLE_DRIVE_EXE)
@@ -44,21 +61,21 @@ def main():
 
         #   cmd.exe /c "C:\Program Files (x86)\Backblaze\bztransmit.exe" -forcefullfilescan_backup_wait_for_completion
         subprocess.run(
-            ["cmd.exe", "/c", 
+            ["cmd.exe", "/c",
              r'C:\Program Files (x86)\Backblaze\bztransmit.exe',
              '-forcefullfilescan_backup_wait_for_completion'],
             creationflags=subprocess.CREATE_NEW_CONSOLE
         )
-   
+
         timeout_with_break(600)
 
         # Run A Manually Scheduled Task To Sleep Computer
-        subprocess.run([r"schtasks.exe", "/Run", "/TN", r"\RJO\Put computer to sleep" ])
+        subprocess.run([r"schtasks.exe", "/Run", "/TN",
+                       r"\RJO\Put computer to sleep"])
 
         print("DONE")
 
     return 0
-
 
 
 # ---------------------------------------------------------
@@ -75,19 +92,14 @@ def timeout_with_break(seconds):
 
 
 # ===================================================DIV60==
-# Path to Google Drive executable (Drive for desktop)
-GOOGLE_DRIVE_EXE = Path(
-    r"C:\Program Files\Google\Drive File Stream\121.0.1.0\GoogleDriveFS.exe"
-)
-
-# ===================================================DIV60==
 def copy_to_drive(src: Path, drive_folder: Path) -> Path:
     """Copy file to Google Drive folder with full diagnostics."""
     if not src.exists():
         raise FileNotFoundError(f"Source file does not exist: {src}")
 
     if not drive_folder.exists():
-        raise FileNotFoundError(f"Google Drive folder not found: {drive_folder}")
+        raise FileNotFoundError(
+            f"Google Drive folder not found: {drive_folder}")
 
     dest = drive_folder / src.name
     shutil.copy2(src, dest)
@@ -113,7 +125,8 @@ def kill_google_drive():
 def restart_google_drive(exe_path: Path):
     """Restart Google Drive to force immediate sync."""
     if not exe_path.exists():
-        raise FileNotFoundError(f"Google Drive executable not found: {exe_path}")
+        raise FileNotFoundError(
+            f"Google Drive executable not found: {exe_path}")
 
     subprocess.Popen(
         [str(exe_path)],
@@ -125,8 +138,33 @@ def restart_google_drive(exe_path: Path):
 
 
 # ===================================================DIV60==
+def is_google_drive_running() -> bool:
+    """Return True if a Google Drive process is currently running."""
+    result = subprocess.run(
+        ["tasklist", "/FI", "IMAGENAME eq GoogleDriveFS.exe", "/FO", "CSV", "/NH"],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+
+    output = result.stdout.strip()
+    if "GoogleDriveFS.exe" in output:
+        return True
+
+    # Fallback for older process name variants.
+    result = subprocess.run(
+        ["tasklist", "/FI", "IMAGENAME eq GoogleDriveSync.exe", "/FO", "CSV", "/NH"],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    return "GoogleDriveSync.exe" in result.stdout
+
+
+# ===================================================DIV60==
 def prompt_yes_no(message):
     return input(f"{message} (Yy/Nn): ").strip().lower() == 'y'
+
 
 # ===================================================DIV60==
 # Call the "main" function
