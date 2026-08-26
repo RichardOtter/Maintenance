@@ -1,0 +1,203 @@
+Update various sw packages
+run in Powershell
+
+
+Powershell (needs elevated privilege)
+winget install Microsoft.PowerShell
+winget upgrade Microsoft.PowerShell
+
+
+Git for Windows
+winget install --id Git.Git -e --source winget
+winget upgrade Git.Git
+
+VS Code
+winget install Microsoft.VisualStudioCode
+winget upgrade Microsoft.VisualStudioCode
+
+Python
+winget install --id Python.PythonInstallManager --source winget
+winget upgrade --id Python.PythonInstallManager --source winget
+py install 3
+py install --upgrade
+
+After uninstall or major release, run-
+py -m pip install --upgrade pip
+py -m pip install --upgrade PyYAML
+py -m pip install --upgrade wakepy
+
+(to get PythonInstallManager from Microsoft Store: winget install 9NQ7512CXL7T)
+
+All
+winget upgrade --all
+
+
+
+
+C:\Users\rotter>winget list
+Name                              Id                                Version                      Available      Source
+-----------------------------------------------------------------------------------------------------------------------
+7-Zip 26.02 (x64)                 7zip.7zip                         26.02                                       winget
+A Ruler for Windows               ARP\Machine\X64\{DCF4C336-18DB-4… 3.0
+App Installer                     Microsoft.AppInstaller            1.29.290.0                                  winget
+AutoHotkey                        AutoHotkey.AutoHotkey             2.0.26                                      winget
+AV1 Video Extension               MSIX\Microsoft.AV1VideoExtension… 2.0.24.0
+AVC Encoder Video Extension       MSIX\Microsoft.AVCEncoderVideoEx… 1.1.23.0
+Backblaze                         ARP\Machine\X86\{63654DE4-6924-4… 9.2.2.897
+Beyond Compare 4.4.7              ScooterSoftware.BeyondCompare.4   4.4.7.28397                                 winget
+Brother Print Support App         MSIX\C2258428.Brother.PrintSuppo… 2.20.15.0
+Canon IJ Scan Utility             ARP\Machine\X86\Canon_IJ_Scan_Ut… 1.6.1.2
+Canon Inkjet Printer/Scanner/Fax… ARP\Machine\X86\CANONIJPLM100     6.7.0
+CanoScan LiDE 400 Scanner Driver  ARP\Machine\X64\{1199FAD5-9546-4… 1.00
+Claude                            Anthropic.Claude                  1.9659.2.0                   1.30096.1      winget
+Command Palette                   MSIX\Microsoft.CommandPalette_0.… 0.11.11762.0
+Copilot                           ARP\Machine\X86\Microsoft Copilot 152.0.4191.34
+Copilot                           MSIX\Microsoft.Copilot_152.0.419… 152.0.4191.34
+Deutsch Local Experience Pack     MSIX\Microsoft.LanguageExperienc… 26100.169.270.0
+Dev Home                          MSIX\Microsoft.Windows.DevHome_0… 0.0.0.0
+Facebook                          ARP\User\X64\d598adb8b4b2bcd6e0f… 1.0
+Feedback Hub                      MSIX\Microsoft.WindowsFeedbackHu… 2.2606.703.0
+FileZilla 3.69.5                  ARP\Machine\X86\FileZilla Client  3.69.5
+Game Bar                          MSIX\Microsoft.XboxGamingOverlay… 7.326.8061.0
+Game Speech Window                MSIX\Microsoft.XboxSpeechToTextO… 1.97.17002.0
+GedSite version 5.09              ARP\Machine\X64\{F60DD156-BDC0-4… 5.09
+Get Help                          MSIX\Microsoft.GetHelp_10.2409.4… 10.2409.42162.0
+Git                               Git.Git                           2.55.0.4                                    winget
+GitKraken                         Axosoft.GitKraken                 12.4.0                                      winget
+Gmail                             ARP\User\X64\4726330c75b42807d11… 1.0
+Google Calendar                   ARP\User\X64\2391f82f0579af2c0d3… 1.0
+Google Chrome                     ARP\Machine\X86\Google Chrome     151.0.7922.170
+Google Contacts                   ARP\User\X64\23d2c5e388db37141e7… 1.0
+Google Drive                      Google.GoogleDrive                129.0.1.0                                   winget
+Google Maps                       ARP\User\X64\dcd5f7d134b1d734550… 1.0
+HEIF Image Extension              MSIX\Microsoft.HEIFImageExtensio… 1.2.48.0
+HEVC Video Extensions from Devic… MSIX\Microsoft.HEVCVideoExtensio… 2.5.33.0
+Intel(R) Arc Software & Drivers   ARP\Machine\X64\Intel(R) Arc Sof… 1.0.916.8
+Intel(R) Chipset Device Software  ARP\Machine\X86\{d86cfdf3-0928-4… 10.1.19899.8597
+Intel(R) Management Engine Compo… ARP\Machine\X64\{1CEAC85D-2590-4… 2425.6.26.0
+Intel(R) Serial IO                ARP\Machine\X64\{9FD91C5C-44AE-4… 30.100.2417.30
+Intel(R) Wireless Bluetooth(R)    ARP\Machine\X86\{00000060-0230-1… 23.60.0.1
+Intel® Graphics Command Center    MSIX\AppUp.IntelGraphicsExperien… 1.100.5688.0
+Intel® Graphics Software          MSIX\AppUp.IntelArcSoftware_26.2… 26.26.2459.0
+Link Shell Extension              HermannSchinagl.LinkShellExtensi… 3.9.3.5                                     winget
+Local AI Manager for Microsoft 3… MSIX\aimgr_0.20.61.0_x64__8wekyb… 0.20.61.0
+MatchFetch                        ARP\User\X64\MatchFetch_is1       2.1.2
+Microsoft .Net Native Framework … MSIX\Microsoft.NET.Native.Framew… 2.2.29512.0
+Microsoft .Net Native Framework … MSIX\Microsoft.NET.Native.Framew… 2.2.29512.0
+Microsoft .Net Native Runtime Pa… Microsoft.DotNet.Native.Runtime   2.2.28604.0                                 winget
+Microsoft .Net Native Runtime Pa… Microsoft.DotNet.Native.Runtime   2.2.28604.0                                 winget
+Microsoft 365 - en-us             ARP\Machine\X64\O365HomePremReta… 16.0.20326.20100
+Microsoft 365 Copilot             MSIX\Microsoft.MicrosoftOfficeHu… 19.2608.49021.0
+Microsoft Bing                    MSIX\Microsoft.BingSearch_1.1.43… 1.1.43.0
+Microsoft Clipchamp               MSIX\Clipchamp.Clipchamp_4.5.109… 4.5.10920.0
+Microsoft Defender                MSIX\Microsoft.6365217CE6EB4_102… 102.2504.16004.0
+Microsoft Edge                    Microsoft.Edge                    151.0.4129.93                151.0.4129.101 winget
+Microsoft Edge                    MSIX\Microsoft.MicrosoftEdge.Sta… 151.0.4129.93
+Microsoft Edge For Game Bar       MSIX\Microsoft.Edge.GameAssist_1… 1.0.4019.0
+Microsoft Engagement Framework    MSIX\Microsoft.Services.Store.En… 10.0.23012.0
+Microsoft Engagement Framework    MSIX\Microsoft.Services.Store.En… 10.0.23012.0
+Microsoft Katja (Natural) - Germ… MSIX\MicrosoftWindows.Voice.de-D… 1.0.4.0
+Microsoft OneDrive                Microsoft.OneDrive                26.145.0728.0010                            winget
+Microsoft Photos                  MSIX\Microsoft.Windows.Photos_20… 2026.11060.2004.0
+Microsoft Sticky Notes            MSIX\Microsoft.MicrosoftStickyNo… 4.0.6104.0
+Microsoft Store                   MSIX\Microsoft.WindowsStore_2260… 22607.1401.5.0
+Microsoft Teams                   Microsoft.Teams                   26198.304.4946.9672                         winget
+Microsoft To Do                   MSIX\Microsoft.Todos_0.176.7601.… 0.176.7601.0
+Microsoft Visual C++ 2015 UWP De… Microsoft.VCLibs.Desktop.14       14.0.33728.0                                winget
+Microsoft Visual C++ 2015 UWP De… Microsoft.VCLibs.Desktop.14       14.0.33728.0                                winget
+Microsoft Visual C++ 2015 UWP Ru… Microsoft.VCLibs.14               14.0.33519.0                                winget
+Microsoft Visual C++ 2015 UWP Ru… Microsoft.VCLibs.14               14.0.33519.0                                winget
+Microsoft Visual C++ v14 Redistr… Microsoft.VCRedist.2015+.x64      14.51.36247.0                               winget
+Microsoft Visual C++ v14 Redistr… Microsoft.VCRedist.2015+.x86      14.51.36247.0                               winget
+Microsoft Visual Studio Code (Us… XP9KHM4BK9FZ7Q                    1.134.0                                     msstore
+Microsoft Windows Desktop Runtim… Microsoft.DotNet.DesktopRuntime.8 8.0.30                                      winget
+Microsoft Windows Desktop Runtim… Microsoft.DotNet.DesktopRuntime.9 9.0.19                                      winget
+Microsoft.Office.ActionsServer    MSIX\Microsoft.Office.ActionsSer… 16.0.20326.20100
+Microsoft.UI.Xaml.2.8             Microsoft.UI.Xaml.2.8             8.2511.26001.0                              winget
+Microsoft.UI.Xaml.2.8             Microsoft.UI.Xaml.2.8             8.2501.31001.0                              winget
+Mobile devices                    MSIX\MicrosoftWindows.CrossDevic… 1.26071.84.0
+MPEG-2 Video Extension            MSIX\Microsoft.MPEG2VideoExtensi… 1.2.13.0
+MSN Weather                       MSIX\Microsoft.BingWeather_4.54.… 4.54.63045.0
+News                              MSIX\Microsoft.BingNews_4.56.218… 4.56.21872.0
+OfficePushNotificationsUtility    MSIX\Microsoft.OfficePushNotific… 16.0.20326.20100
+OneDrive                          MSIX\Microsoft.OneDriveSync_2614… 26145.728.10.0
+OraHost version 1.74              ARP\Machine\X86\{C705D3CB-8F82-4… 1.74
+Outlook for Windows               Microsoft.Outlook                 1.2026.812.100                              winget
+Paint                             MSIX\Microsoft.Paint_11.2605.71.… 11.2605.71.0
+Phone Link                        MSIX\Microsoft.YourPhone_1.26071… 1.26071.164.0
+Power Automate                    MSIX\Microsoft.PowerAutomateDesk… 1.0.2122.0
+PowerShell                        Microsoft.PowerShell              7.6.5.0                                     winget
+PowerShell 7.6.3.0-x64            Microsoft.PowerShell              7.6.3.0                                     winget
+PowerToys (Preview) x64           XP89DCGQ3K6VLD                    0.100.2                                     msstore
+PowerToys FileLocksmith Context … MSIX\Microsoft.PowerToys.FileLoc… 0.100.2.0
+PowerToys PowerRename Context Me… MSIX\Microsoft.PowerToys.PowerRe… 0.100.2.0
+PowerToys.SparseApp               MSIX\Microsoft.PowerToys.SparseA… 0.100.2.0
+Python 3.14.7                     Python.Python.3.14                < 3.14.0                     3.14.7         winget
+Python Install Manager            Python.PythonInstallManager       26.3.240.0                                  winget
+Python Launcher                   Python.Launcher                   > 3.13.5                                    winget
+Quick Assist                      MSIX\MicrosoftCorporationII.Quic… 2.0.57.0
+Quicken                           Quicken.Quicken                   27.1.68.31                                  winget
+Raw Image Extension               MSIX\Microsoft.RawImageExtension… 2.5.24.0
+Realtek Audio Control             MSIX\RealtekSemiconductorCorp.Re… 1.51.331.0
+RootsMagic 11.5.0.0               RootsMagic.RootsMagic.11          11.5.0.0                                    winget
+Snipping Tool                     MSIX\Microsoft.ScreenSketch_11.2… 11.2605.36.0
+Solitaire & Casual Games          MSIX\Microsoft.MicrosoftSolitair… 4.26.7290.0
+Speech Pack - German (Germany)    MSIX\MicrosoftWindows.Speech.de-… 1.0.13.0
+SQLite Expert Personal 5.5.44.660 CoralCreek.SQLiteExpert.Personal  5.5.44.660                                  winget
+Start Experiences App             MSIX\Microsoft.StartExperiencesA… 1.380.2.0
+Store Experience Host             MSIX\Microsoft.StorePurchaseApp_… 22606.1401.3.0
+TurboTax 2025                     ARP\Machine\X64\{0F2DF2C8-F0B4-4… 025.000.0267
+Visual Studio Code                MSIX\Microsoft.VisualStudioCode_… 1.0.134.0
+VP9 Video Extensions              MSIX\Microsoft.VP9VideoExtension… 1.2.20.0
+WD Discovery                      ARP\Machine\X86\WDDiscovery       5.2.730
+Web Media Extensions              MSIX\Microsoft.WebMediaExtension… 2.1.38.0
+WebP Image Extension              MSIX\Microsoft.WebpImageExtensio… 1.2.31.0
+WhatsApp                          MSIX\5319275A.WhatsAppDesktop_2.… 2.2631.102.0
+Widgets Platform Runtime          MSIX\Microsoft.WidgetsPlatformRu… 1.6.19.0
+WinAppRuntime.Main.1.8            MSIX\MicrosoftCorporationII.WinA… 8000.921.1539.0
+WinAppRuntime.Main.2              MSIX\MicrosoftCorporationII.WinA… 2.3.1.0
+WinAppRuntime.Singleton           MSIX\MicrosoftCorporationII.WinA… 8002.3.1.0
+Windows Application Compatibilit… MSIX\Microsoft.ApplicationCompat… 1.2511.9.0
+Windows Calculator                MSIX\Microsoft.WindowsCalculator… 11.2606.0.0
+Windows Camera                    MSIX\Microsoft.WindowsCamera_202… 2026.2605.7.0
+Windows Clock                     MSIX\Microsoft.WindowsAlarms_11.… 11.2606.11.0
+Windows Media Player              MSIX\Microsoft.ZuneMusic_11.2606… 11.2606.19.0
+Windows Notepad                   MSIX\Microsoft.WindowsNotepad_11… 11.2606.15.0
+Windows Package Manager Source (… MSIX\Microsoft.Winget.Source_202… 2026.821.2335.4
+Windows Security                  MSIX\Microsoft.SecHealthUI_1000.… 1000.29628.1000.0
+Windows Sound Recorder            MSIX\Microsoft.WindowsSoundRecor… 1.1.119.0
+Windows Subsystem for Linux       Microsoft.WSL                     2.6.3.0                      2.7.12         winget
+Windows Terminal                  Microsoft.WindowsTerminal         1.24.11911.0                                winget
+Windows Web Experience Pack       MSIX\MicrosoftWindows.Client.Web… 526.21100.40.0
+WindowsAppRuntime.1.7             Microsoft.WindowsAppRuntime.1.7   1.7.9                                       winget
+WindowsAppRuntime.1.7             Microsoft.WindowsAppRuntime.1.7   1.7.9                                       winget
+WindowsAppRuntime.1.7             Microsoft.WindowsAppRuntime.1.7   1.7.8                                       winget
+WindowsAppRuntime.1.7             Microsoft.WindowsAppRuntime.1.7   1.7.7                                       winget
+WindowsAppRuntime.1.7             Microsoft.WindowsAppRuntime.1.7   1.7.6                                       winget
+WindowsAppRuntime.1.7             Microsoft.WindowsAppRuntime.1.7   1.7.5                                       winget
+WindowsAppRuntime.1.8             Microsoft.WindowsAppRuntime.1.8   > 1.8.9                                     winget
+WindowsAppRuntime.1.8             Microsoft.WindowsAppRuntime.1.8   > 1.8.9                                     winget
+WindowsAppRuntime.1.8             Microsoft.WindowsAppRuntime.1.8   > 1.8.9                                     winget
+WindowsAppRuntime.1.8             Microsoft.WindowsAppRuntime.1.8   > 1.8.9                                     winget
+WindowsAppRuntime.1.8             Microsoft.WindowsAppRuntime.1.8   1.8.9                                       winget
+WindowsAppRuntime.1.8             Microsoft.WindowsAppRuntime.1.8   1.8.8                                       winget
+WindowsAppRuntime.1.8             Microsoft.WindowsAppRuntime.1.8   1.8.7                                       winget
+WindowsAppRuntime.1.8             Microsoft.WindowsAppRuntime.1.8   1.8.6                                       winget
+WindowsAppRuntime.1.8             Microsoft.WindowsAppRuntime.1.8   1.8.5                                       winget
+WindowsAppRuntime.1.8             Microsoft.WindowsAppRuntime.1.8   1.8.4                                       winget
+WindowsAppRuntime.2               Microsoft.WindowsAppRuntime.2     2.4.0.0                                     winget
+WindowsAppRuntime.2               Microsoft.WindowsAppRuntime.2     2.4.0.0                                     winget
+WindowsAppRuntime.2               Microsoft.WindowsAppRuntime.2     2.3.1.0                                     winget
+WindowsAppRuntime.2               Microsoft.WindowsAppRuntime.2     2.3.0.0                                     winget
+XBOX                              MSIX\Microsoft.GamingApp_2608.10… 2608.1001.17.0
+Xbox Identity Provider            MSIX\Microsoft.XboxIdentityProvi… 12.130.16001.0
+Xbox TCUI                         MSIX\Microsoft.Xbox.TCUI_1.24.10… 1.24.10001.0
+Zoom Workplace                    Zoom.Zoom.EXE                     7.1.5 (43453)                               winget
+
+C:\Users\rotter>
+
+note- in github-
+https://github.com/microsoft/winget-pkgs/tree/master/manifests/r/RootsMagic/RootsMagic
+
+winget install --id RootsMagic.RootsMagic.11 -e
+
