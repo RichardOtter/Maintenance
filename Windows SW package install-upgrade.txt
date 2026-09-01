@@ -28,6 +28,17 @@ py -m pip install --upgrade wakepy
 
 (to get PythonInstallManager from Microsoft Store: winget install 9NQ7512CXL7T)
 
+py -m pip install --upgrade pip
+py -m pip install --upgrade PyYAML
+py -m pip install --upgrade wakepy
+
+
+
+winget install --id SQLite.SQLite
+
+
+
+
 All
 winget upgrade --all
 
